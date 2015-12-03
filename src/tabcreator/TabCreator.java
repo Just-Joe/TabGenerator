@@ -18,7 +18,7 @@ public class TabCreator {
     public static void main(String[] args) {
         // TODO code application logic here
         Interface IN = new Interface();
-        IN.setBounds(0, 0, 980, 670);
+        IN.setBounds(0, 0, 1020, 670);
         IN.setVisible(true);
     }
     
