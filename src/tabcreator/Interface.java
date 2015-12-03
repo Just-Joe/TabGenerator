@@ -33,6 +33,8 @@ public class Interface extends javax.swing.JFrame {
         initClickListeners();
         initColumnSpacing();
         initButtonLinks();
+        
+        TabTable.setColumnSelectionInterval(0, 0);
     }
 
     private void initTableModel(){
@@ -42,8 +44,8 @@ public class Interface extends javax.swing.JFrame {
     private void initColumnSpacing(){
         for(int i =0; i<TM.getColumnCount(); i++){
             TableColumn TC = TabTable.getColumnModel().getColumn(i);
-            TC.setMaxWidth(20);
-            TC.setMinWidth(20);
+            TC.setMaxWidth(30);
+            TC.setMinWidth(30);
         }
         repaint();
     }
@@ -72,12 +74,13 @@ public class Interface extends javax.swing.JFrame {
         
         for(Component Cur: CMPS){
             JToggleButton JTB = (JToggleButton)Cur;
-            col++;
+            
             if(col==6){
                 row++;
                 col=0;
             }
             System.out.println("Column: " + col + "  Row: " + row + "  Value: " + JTB.getText());
+            col++;
         }
     }
     
@@ -163,7 +166,6 @@ public class Interface extends javax.swing.JFrame {
         jToggleButton70 = new javax.swing.JToggleButton();
         jToggleButton72 = new javax.swing.JToggleButton();
         jToggleButton74 = new javax.swing.JToggleButton();
-        DataButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabTable = new javax.swing.JTable();
@@ -180,6 +182,26 @@ public class Interface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         InsertTab = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        DuplicateButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        estring1 = new javax.swing.JTextField();
+        EString1 = new javax.swing.JTextField();
+        BString1 = new javax.swing.JTextField();
+        GString1 = new javax.swing.JTextField();
+        DString1 = new javax.swing.JTextField();
+        AString1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        Title = new javax.swing.JLabel();
+        Title1 = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -909,38 +931,31 @@ public class Interface extends javax.swing.JFrame {
         jToggleButton74.setBounds(900, 158, 50, 10);
 
         getContentPane().add(SelectionPanel);
-        SelectionPanel.setBounds(40, 10, 990, 180);
-
-        DataButton.setText("GetALLData");
-        DataButton.setToolTipText("");
-        DataButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DataButtonMouseClicked(evt);
-            }
-        });
-        getContentPane().add(DataButton);
-        DataButton.setBounds(50, 190, 240, 23);
+        SelectionPanel.setBounds(40, 110, 980, 180);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Gneck.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 20, 980, 160);
+        jLabel1.setBounds(50, 120, 965, 160);
 
+        TabTable.setBackground(new java.awt.Color(51, 51, 51));
+        TabTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TabTable.setForeground(new java.awt.Color(255, 255, 255));
         TabTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"
             }
         ));
         TabTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         TabTable.setColumnSelectionAllowed(true);
-        TabTable.setRowHeight(20);
+        TabTable.setRowHeight(25);
         TabTable.setRowSelectionAllowed(false);
         TabTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -950,80 +965,99 @@ public class Interface extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TabTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 440, 980, 170);
+        jScrollPane1.setBounds(50, 320, 965, 190);
 
+        estring.setBackground(new java.awt.Color(200, 150, 124));
+        estring.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         estring.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         estring.setText(" ");
         estring.setBorder(null);
         getContentPane().add(estring);
-        estring.setBounds(23, 160, 20, 20);
+        estring.setBounds(23, 260, 20, 20);
 
+        EString.setBackground(new java.awt.Color(200, 150, 124));
+        EString.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         EString.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         EString.setText(" ");
         EString.setBorder(null);
         getContentPane().add(EString);
-        EString.setBounds(23, 20, 20, 20);
+        EString.setBounds(23, 120, 20, 20);
 
+        BString.setBackground(new java.awt.Color(200, 150, 124));
+        BString.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BString.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         BString.setText(" ");
         BString.setBorder(null);
         getContentPane().add(BString);
-        BString.setBounds(23, 47, 20, 20);
+        BString.setBounds(23, 147, 20, 20);
 
+        GString.setBackground(new java.awt.Color(200, 150, 124));
+        GString.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         GString.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         GString.setText(" ");
         GString.setBorder(null);
         getContentPane().add(GString);
-        GString.setBounds(23, 75, 20, 20);
+        GString.setBounds(23, 175, 20, 20);
 
+        DString.setBackground(new java.awt.Color(200, 150, 124));
+        DString.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         DString.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         DString.setText(" ");
         DString.setBorder(null);
         getContentPane().add(DString);
-        DString.setBounds(23, 105, 20, 20);
+        DString.setBounds(23, 205, 20, 20);
 
+        AString.setBackground(new java.awt.Color(200, 150, 124));
+        AString.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         AString.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         AString.setText(" ");
         AString.setBorder(null);
         getContentPane().add(AString);
-        AString.setBounds(23, 133, 20, 20);
+        AString.setBounds(23, 233, 20, 20);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("e: ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 160, 20, 20);
+        jLabel2.setBounds(0, 260, 20, 20);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("E: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 20, 20, 20);
+        jLabel3.setBounds(0, 120, 20, 20);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("B: ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 47, 20, 20);
+        jLabel4.setBounds(0, 147, 20, 20);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("G: ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 75, 20, 20);
+        jLabel5.setBounds(0, 175, 20, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("D: ");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 105, 20, 20);
+        jLabel6.setBounds(0, 205, 20, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("A: ");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 133, 20, 20);
+        jLabel7.setBounds(0, 233, 20, 20);
 
+        InsertTab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         InsertTab.setText("Insert");
         InsertTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1031,7 +1065,156 @@ public class Interface extends javax.swing.JFrame {
             }
         });
         getContentPane().add(InsertTab);
-        InsertTab.setBounds(300, 190, 230, 23);
+        InsertTab.setBounds(390, 285, 150, 30);
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chord Name" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(50, 285, 170, 30);
+
+        DuplicateButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        DuplicateButton.setText("Duplicate");
+        DuplicateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DuplicateButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(DuplicateButton);
+        DuplicateButton.setBounds(550, 285, 140, 30);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setText("Clear All");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(860, 285, 150, 30);
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Variation", " " }));
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(230, 285, 150, 30);
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton3.setText("Delete");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(700, 285, 150, 30);
+
+        estring1.setBackground(new java.awt.Color(51, 51, 51));
+        estring1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        estring1.setForeground(new java.awt.Color(255, 255, 255));
+        estring1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        estring1.setText(" ");
+        estring1.setBorder(null);
+        getContentPane().add(estring1);
+        estring1.setBounds(25, 468, 20, 20);
+
+        EString1.setBackground(new java.awt.Color(51, 51, 51));
+        EString1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        EString1.setForeground(new java.awt.Color(255, 255, 255));
+        EString1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        EString1.setText(" ");
+        EString1.setBorder(null);
+        getContentPane().add(EString1);
+        EString1.setBounds(25, 343, 20, 20);
+
+        BString1.setBackground(new java.awt.Color(51, 51, 51));
+        BString1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BString1.setForeground(new java.awt.Color(255, 255, 255));
+        BString1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        BString1.setText(" ");
+        BString1.setBorder(null);
+        getContentPane().add(BString1);
+        BString1.setBounds(25, 368, 20, 20);
+
+        GString1.setBackground(new java.awt.Color(51, 51, 51));
+        GString1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        GString1.setForeground(new java.awt.Color(255, 255, 255));
+        GString1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GString1.setText(" ");
+        GString1.setBorder(null);
+        getContentPane().add(GString1);
+        GString1.setBounds(25, 393, 20, 20);
+
+        DString1.setBackground(new java.awt.Color(51, 51, 51));
+        DString1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DString1.setForeground(new java.awt.Color(255, 255, 255));
+        DString1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DString1.setText(" ");
+        DString1.setBorder(null);
+        getContentPane().add(DString1);
+        DString1.setBounds(25, 418, 20, 20);
+
+        AString1.setBackground(new java.awt.Color(51, 51, 51));
+        AString1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AString1.setForeground(new java.awt.Color(255, 255, 255));
+        AString1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AString1.setText(" ");
+        AString1.setBorder(null);
+        getContentPane().add(AString1);
+        AString1.setBounds(25, 443, 20, 20);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel8.setText("e: ");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(2, 468, 20, 20);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel9.setText("E: ");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(2, 343, 20, 20);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel10.setText("B: ");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(2, 368, 20, 20);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel11.setText("G: ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(2, 393, 20, 20);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel12.setText("D: ");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(2, 418, 20, 20);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel13.setText("A: ");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(2, 443, 20, 20);
+
+        Title.setFont(new java.awt.Font("Magneto", 0, 100)); // NOI18N
+        Title.setForeground(new java.awt.Color(179, 147, 131));
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title.setText("Tab Generator");
+        getContentPane().add(Title);
+        Title.setBounds(15, 15, 1000, 100);
+
+        Title1.setFont(new java.awt.Font("Magneto", 0, 100)); // NOI18N
+        Title1.setForeground(new java.awt.Color(51, 51, 51));
+        Title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title1.setText("Tab Generator");
+        getContentPane().add(Title1);
+        Title1.setBounds(10, 10, 1000, 100);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minimalism_texture_paper_list_line.jpg"))); // NOI18N
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 1050, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1054,6 +1237,13 @@ public class Interface extends javax.swing.JFrame {
         DString.setText("");
         AString.setText("");
         estring.setText("");
+        
+        EString1.setText("");
+        BString1.setText("");
+        GString1.setText("");
+        DString1.setText("");
+        AString1.setText("");
+        estring1.setText("");
     }
     
     private void SetStrings(){
@@ -1073,21 +1263,27 @@ public class Interface extends javax.swing.JFrame {
                 switch(sn){
                     case "E":
                         EString.setText(num);
+                        EString1.setText(num);
                         break;
                     case "B":
-                        BString.setText(num);    
+                        BString.setText(num);  
+                        BString1.setText(num);  
                         break;
                     case "G":
                         GString.setText(num);
+                        GString1.setText(num);  
                         break;
                     case "D":
                         DString.setText(num);
+                        DString1.setText(num);
                         break;
                     case "A":
                         AString.setText(num);
+                        AString1.setText(num);
                         break;
                     case "e":
                         estring.setText(num);
+                        estring1.setText(num);
                         break;
                     default:
                         System.out.println("Oooop " + sn + " doesnt exist!");
@@ -1101,11 +1297,34 @@ public class Interface extends javax.swing.JFrame {
         }
     }
     
-    private void DataButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DataButtonMouseClicked
-        // TODO add your handling code here:
-        SetStrings();
-    }//GEN-LAST:event_DataButtonMouseClicked
-
+    private void ShowCurrentTab(int col){
+        ClearSelection();
+        if(((String)TabTable.getValueAt(0, col)).trim()!=""){
+            int row=Integer.valueOf((String)TabTable.getValueAt(0, col));
+            Buttons[0][row].setSelected(true);
+        }
+        if(((String)TabTable.getValueAt(1, col)).trim()!=""){
+            int row=Integer.valueOf((String)TabTable.getValueAt(1, col));
+            Buttons[1][row].setSelected(true);
+        }
+        if(((String)TabTable.getValueAt(2, col)).trim()!=""){
+            int row=Integer.valueOf((String)TabTable.getValueAt(2, col));
+            Buttons[2][row].setSelected(true);
+        }
+        if(((String)TabTable.getValueAt(3, col)).trim()!=""){
+            int row=Integer.valueOf((String)TabTable.getValueAt(3, col));
+            Buttons[3][row].setSelected(true);
+        }
+        if(((String)TabTable.getValueAt(4, col)).trim()!=""){
+            int row=Integer.valueOf((String)TabTable.getValueAt(4, col));
+            Buttons[4][row].setSelected(true);
+        }
+        if(((String)TabTable.getValueAt(5, col)).trim()!=""){
+            int row=Integer.valueOf((String)TabTable.getValueAt(5, col));
+            Buttons[5][row].setSelected(true);
+        }
+    }
+    
     private void InsertTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertTabMouseClicked
         // TODO add your handling code here:
         InsertIntoTab();
@@ -1119,9 +1338,47 @@ public class Interface extends javax.swing.JFrame {
     private void TabTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabTableMouseClicked
         // TODO add your handling code here:
         TabColIndex=TabTable.getSelectedColumn();
+        ShowCurrentTab(TabColIndex);
     }//GEN-LAST:event_TabTableMouseClicked
 
+    private void DuplicateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DuplicateButtonMouseClicked
+        // TODO add your handling code here:
+        int[] cols = TabTable.getSelectedColumns();
+        
+        if(TabTable.getColumnCount()<(cols[0]+((2*cols.length)-1))){
+            for(int i=0; i<cols.length; i++){
+                TM.addColumn(TabTable.getColumnCount()+1);
+            }
+            initColumnSpacing();
+        }
+        
+        for(int i : cols){
+            TabTable.setValueAt(TabTable.getValueAt(0, i), 0, i+cols.length);
+            TabTable.setValueAt(TabTable.getValueAt(1, i), 1, i+cols.length);
+            TabTable.setValueAt(TabTable.getValueAt(2, i), 2, i+cols.length);
+            TabTable.setValueAt(TabTable.getValueAt(3, i), 3, i+cols.length);
+            TabTable.setValueAt(TabTable.getValueAt(4, i), 4, i+cols.length);
+            TabTable.setValueAt(TabTable.getValueAt(5, i), 5, i+cols.length);
+        }
+    }//GEN-LAST:event_DuplicateButtonMouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        int[] cols = TabTable.getSelectedColumns();
+        
+        for(int i : cols){
+            TabTable.setValueAt("", 0, i);
+            TabTable.setValueAt("", 1, i);
+            TabTable.setValueAt("", 2, i);
+            TabTable.setValueAt("", 3, i);
+            TabTable.setValueAt("", 4, i);
+            TabTable.setValueAt("", 5, i);
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
     private void InsertIntoTab(){
+        TabColIndex= TabTable.getSelectedColumn();
+        
         if(TabColIndex>=(TabTable.getColumnCount()-1)){
             TM.addColumn(TabColIndex+2);
         }
@@ -1175,24 +1432,43 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AString;
+    private javax.swing.JTextField AString1;
     private javax.swing.JTextField BString;
+    private javax.swing.JTextField BString1;
+    private javax.swing.JLabel Background;
     private javax.swing.JTextField DString;
-    private javax.swing.JButton DataButton;
+    private javax.swing.JTextField DString1;
+    private javax.swing.JButton DuplicateButton;
     private javax.swing.JTextField EString;
+    private javax.swing.JTextField EString1;
     private javax.swing.JTextField GString;
+    private javax.swing.JTextField GString1;
     private javax.swing.JButton InsertTab;
     private javax.swing.JPanel SelectionPanel;
     private javax.swing.JToggleButton T;
     private javax.swing.JToggleButton T1;
     private javax.swing.JTable TabTable;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel Title1;
     private javax.swing.JTextField estring;
+    private javax.swing.JTextField estring1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton11;
