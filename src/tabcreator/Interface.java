@@ -9,7 +9,13 @@ package tabcreator;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import javax.swing.JToggleButton;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -19,7 +25,7 @@ import javax.swing.table.TableColumn;
  */
 public class Interface extends javax.swing.JFrame {
 
-    JToggleButton[][] Buttons = new JToggleButton[6][12];
+    JToggleButton[][] Buttons = new JToggleButton[6][13];
     
     int TabColIndex=0;
     DefaultTableModel TM;
@@ -38,10 +44,30 @@ public class Interface extends javax.swing.JFrame {
     }
 
     private void initTableModel(){
+        //Initialized table model
         TM=(DefaultTableModel)TabTable.getModel();
+        
+        TabTable.requestFocusInWindow();
+        
+        TabTable.getColumnModel().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                System.out.println("Column Selection Changed! Currently Selected: " + TabTable.getSelectedColumn());
+                
+                TabColIndex=TabTable.getSelectedColumn();
+                ShowCurrentTab(TabColIndex);
+            }
+        });
+        
+        
     }
     
     private void initColumnSpacing(){
+        //Sets all data in tab table to centered
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        TabTable.setDefaultRenderer(String.class, centerRenderer);
+        
         for(int i =0; i<TM.getColumnCount(); i++){
             TableColumn TC = TabTable.getColumnModel().getColumn(i);
             TC.setMaxWidth(30);
@@ -59,6 +85,7 @@ public class Interface extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     //System.out.println("Clicked on " + JTB.getText());
+                    
                     SetStrings();
                 }
             };
@@ -80,6 +107,7 @@ public class Interface extends javax.swing.JFrame {
                 col=0;
             }
             System.out.println("Column: " + col + "  Row: " + row + "  Value: " + JTB.getText());
+            Buttons[col][row]=JTB;
             col++;
         }
     }
@@ -124,10 +152,10 @@ public class Interface extends javax.swing.JFrame {
         jToggleButton30 = new javax.swing.JToggleButton();
         jToggleButton31 = new javax.swing.JToggleButton();
         jToggleButton32 = new javax.swing.JToggleButton();
-        jToggleButton33 = new javax.swing.JToggleButton();
-        jToggleButton34 = new javax.swing.JToggleButton();
         jToggleButton35 = new javax.swing.JToggleButton();
+        jToggleButton34 = new javax.swing.JToggleButton();
         jToggleButton36 = new javax.swing.JToggleButton();
+        jToggleButton33 = new javax.swing.JToggleButton();
         jToggleButton37 = new javax.swing.JToggleButton();
         jToggleButton38 = new javax.swing.JToggleButton();
         jToggleButton39 = new javax.swing.JToggleButton();
@@ -182,10 +210,10 @@ public class Interface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         InsertTab = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         DuplicateButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jButton3 = new javax.swing.JButton();
         estring1 = new javax.swing.JTextField();
         EString1 = new javax.swing.JTextField();
@@ -545,24 +573,6 @@ public class Interface extends javax.swing.JFrame {
         SelectionPanel.add(jToggleButton32);
         jToggleButton32.setBounds(380, 158, 50, 10);
 
-        jToggleButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
-        jToggleButton33.setText("D-6");
-        jToggleButton33.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
-        jToggleButton33.setDisabledSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
-        jToggleButton33.setOpaque(true);
-        jToggleButton33.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Selected.png"))); // NOI18N
-        SelectionPanel.add(jToggleButton33);
-        jToggleButton33.setBounds(460, 101, 50, 10);
-
-        jToggleButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
-        jToggleButton34.setText("B-6");
-        jToggleButton34.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
-        jToggleButton34.setDisabledSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
-        jToggleButton34.setOpaque(true);
-        jToggleButton34.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Selected.png"))); // NOI18N
-        SelectionPanel.add(jToggleButton34);
-        jToggleButton34.setBounds(460, 42, 50, 10);
-
         jToggleButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
         jToggleButton35.setText("E-6");
         jToggleButton35.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
@@ -573,6 +583,15 @@ public class Interface extends javax.swing.JFrame {
         SelectionPanel.add(jToggleButton35);
         jToggleButton35.setBounds(460, 15, 50, 10);
 
+        jToggleButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
+        jToggleButton34.setText("B-6");
+        jToggleButton34.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
+        jToggleButton34.setDisabledSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
+        jToggleButton34.setOpaque(true);
+        jToggleButton34.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Selected.png"))); // NOI18N
+        SelectionPanel.add(jToggleButton34);
+        jToggleButton34.setBounds(460, 42, 50, 10);
+
         jToggleButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
         jToggleButton36.setText("G-6");
         jToggleButton36.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
@@ -581,6 +600,15 @@ public class Interface extends javax.swing.JFrame {
         jToggleButton36.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Selected.png"))); // NOI18N
         SelectionPanel.add(jToggleButton36);
         jToggleButton36.setBounds(460, 70, 50, 10);
+
+        jToggleButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
+        jToggleButton33.setText("D-6");
+        jToggleButton33.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
+        jToggleButton33.setDisabledSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
+        jToggleButton33.setOpaque(true);
+        jToggleButton33.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Selected.png"))); // NOI18N
+        SelectionPanel.add(jToggleButton33);
+        jToggleButton33.setBounds(460, 101, 50, 10);
 
         jToggleButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Unselected.png"))); // NOI18N
         jToggleButton37.setText("A-6");
@@ -937,6 +965,12 @@ public class Interface extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 120, 965, 160);
 
+        jScrollPane1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jScrollPane1KeyPressed(evt);
+            }
+        });
+
         TabTable.setBackground(new java.awt.Color(51, 51, 51));
         TabTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TabTable.setForeground(new java.awt.Color(255, 255, 255));
@@ -952,14 +986,28 @@ public class Interface extends javax.swing.JFrame {
             new String [] {
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TabTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         TabTable.setColumnSelectionAllowed(true);
         TabTable.setRowHeight(25);
         TabTable.setRowSelectionAllowed(false);
+        TabTable.setShowVerticalLines(false);
         TabTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabTableMouseClicked(evt);
+            }
+        });
+        TabTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TabTableKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(TabTable);
@@ -1018,7 +1066,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("e: ");
+        jLabel2.setText("E: ");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 260, 20, 20);
 
@@ -1058,7 +1106,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel7.setBounds(0, 233, 20, 20);
 
         InsertTab.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        InsertTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ButtonBack.png"))); // NOI18N
         InsertTab.setText("Insert");
+        InsertTab.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         InsertTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 InsertTabMouseClicked(evt);
@@ -1067,13 +1117,17 @@ public class Interface extends javax.swing.JFrame {
         getContentPane().add(InsertTab);
         InsertTab.setBounds(390, 285, 150, 30);
 
+        jComboBox1.setBackground(new java.awt.Color(134, 117, 109));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chord Name" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Chord Name" }));
+        jComboBox1.setOpaque(false);
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(50, 285, 170, 30);
 
         DuplicateButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        DuplicateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ButtonBack.png"))); // NOI18N
         DuplicateButton.setText("Duplicate");
+        DuplicateButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DuplicateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DuplicateButtonMouseClicked(evt);
@@ -1083,17 +1137,23 @@ public class Interface extends javax.swing.JFrame {
         DuplicateButton.setBounds(550, 285, 140, 30);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ButtonBack.png"))); // NOI18N
         jButton2.setText("Clear All");
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jButton2);
         jButton2.setBounds(860, 285, 150, 30);
 
+        jComboBox2.setBackground(new java.awt.Color(134, 117, 109));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Variation", " " }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Variation", " " }));
+        jComboBox2.setOpaque(false);
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(230, 285, 150, 30);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ButtonBack.png"))); // NOI18N
         jButton3.setText("Delete");
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -1159,7 +1219,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("e: ");
+        jLabel8.setText("E: ");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(2, 468, 20, 20);
 
@@ -1298,34 +1358,35 @@ public class Interface extends javax.swing.JFrame {
     }
     
     private void ShowCurrentTab(int col){
-        //
-        //FIX THIS TO AUTO SHOW TAB ON FRETBOARD WHEN CLICKING ON TABLE
-        //
         
         ClearSelection();
-        if(((String)TabTable.getValueAt(0, col)).trim()!=""){
-            int row=Integer.valueOf((String)TabTable.getValueAt(0, col));
-            Buttons[0][row].setSelected(true);
-        }
-        if(((String)TabTable.getValueAt(1, col)).trim()!=""){
-            int row=Integer.valueOf((String)TabTable.getValueAt(1, col));
-            Buttons[1][row].setSelected(true);
-        }
-        if(((String)TabTable.getValueAt(2, col)).trim()!=""){
-            int row=Integer.valueOf((String)TabTable.getValueAt(2, col));
-            Buttons[2][row].setSelected(true);
-        }
-        if(((String)TabTable.getValueAt(3, col)).trim()!=""){
-            int row=Integer.valueOf((String)TabTable.getValueAt(3, col));
-            Buttons[3][row].setSelected(true);
-        }
-        if(((String)TabTable.getValueAt(4, col)).trim()!=""){
-            int row=Integer.valueOf((String)TabTable.getValueAt(4, col));
-            Buttons[4][row].setSelected(true);
-        }
-        if(((String)TabTable.getValueAt(5, col)).trim()!=""){
-            int row=Integer.valueOf((String)TabTable.getValueAt(5, col));
-            Buttons[5][row].setSelected(true);
+        
+        if((col!=-1) && (TabTable.getValueAt(0, col)!=null)){
+            
+            if(!((String)TabTable.getValueAt(0, col)).trim().equals("")){
+                int row=Integer.valueOf((String)TabTable.getValueAt(0, col));
+                Buttons[0][row].setSelected(true);
+            }
+            if(!((String)TabTable.getValueAt(1, col)).trim().equals("")){
+                int row=Integer.valueOf((String)TabTable.getValueAt(1, col));
+                Buttons[1][row].setSelected(true);
+            }
+            if(!((String)TabTable.getValueAt(2, col)).trim().equals("")){
+                int row=Integer.valueOf((String)TabTable.getValueAt(2, col));
+                Buttons[2][row].setSelected(true);
+            }
+            if(!((String)TabTable.getValueAt(3, col)).trim().equals("")){
+                int row=Integer.valueOf((String)TabTable.getValueAt(3, col));
+                Buttons[3][row].setSelected(true);
+            }
+            if(!((String)TabTable.getValueAt(4, col)).trim().equals("")){
+                int row=Integer.valueOf((String)TabTable.getValueAt(4, col));
+                Buttons[4][row].setSelected(true);
+            }
+            if(!((String)TabTable.getValueAt(5, col)).trim().equals("")){
+                int row=Integer.valueOf((String)TabTable.getValueAt(5, col));
+                Buttons[5][row].setSelected(true);
+            }
         }
     }
     
@@ -1341,28 +1402,40 @@ public class Interface extends javax.swing.JFrame {
 
     private void TabTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabTableMouseClicked
         // TODO add your handling code here:
-        TabColIndex=TabTable.getSelectedColumn();
-        ShowCurrentTab(TabColIndex);
+        //TabColIndex=TabTable.getSelectedColumn();
+        //ShowCurrentTab(TabColIndex);
     }//GEN-LAST:event_TabTableMouseClicked
 
     private void DuplicateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DuplicateButtonMouseClicked
         // TODO add your handling code here:
         int[] cols = TabTable.getSelectedColumns();
         
-        if(TabTable.getColumnCount()<(cols[0]+((2*cols.length)-1))){
-            for(int i=0; i<cols.length; i++){
+        int len = cols.length;
+        
+        if(cols[0]==-1){
+            len--;
+        }
+        
+        System.out.println("Number of cols selected: " + len);
+        
+        if(TabTable.getColumnCount()<(cols[0]+((2*len)-1))){
+            for(int i=0; i<len; i++){
                 TM.addColumn(TabTable.getColumnCount()+1);
             }
             initColumnSpacing();
         }
         
+        
+        
         for(int i : cols){
-            TabTable.setValueAt(TabTable.getValueAt(0, i), 0, i+cols.length);
-            TabTable.setValueAt(TabTable.getValueAt(1, i), 1, i+cols.length);
-            TabTable.setValueAt(TabTable.getValueAt(2, i), 2, i+cols.length);
-            TabTable.setValueAt(TabTable.getValueAt(3, i), 3, i+cols.length);
-            TabTable.setValueAt(TabTable.getValueAt(4, i), 4, i+cols.length);
-            TabTable.setValueAt(TabTable.getValueAt(5, i), 5, i+cols.length);
+            if(i!=-1){
+                TabTable.setValueAt(TabTable.getValueAt(0, i), 0, i+len);
+                TabTable.setValueAt(TabTable.getValueAt(1, i), 1, i+len);
+                TabTable.setValueAt(TabTable.getValueAt(2, i), 2, i+len);
+                TabTable.setValueAt(TabTable.getValueAt(3, i), 3, i+len);
+                TabTable.setValueAt(TabTable.getValueAt(4, i), 4, i+len);
+                TabTable.setValueAt(TabTable.getValueAt(5, i), 5, i+len);
+            }
         }
     }//GEN-LAST:event_DuplicateButtonMouseClicked
 
@@ -1379,6 +1452,32 @@ public class Interface extends javax.swing.JFrame {
             TabTable.setValueAt("", 5, i);
         }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jScrollPane1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jScrollPane1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane1KeyPressed
+
+    private void TabTableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TabTableKeyReleased
+        // TODO add your handling code here:
+        /*
+        System.out.println("Key pressed on table! ");
+        System.out.println("Key Code: " + evt.getKeyCode());
+        int col = TabTable.getSelectedColumn();
+        if(evt.getKeyCode()==37){
+            //left
+            if(col>0){
+                TabTable.setColumnSelectionInterval(col-1, col-1);
+                
+            }
+        }
+        if(evt.getKeyCode()==39){
+            //right
+            if(col<(TabTable.getColumnCount()-1)){
+                TabTable.setColumnSelectionInterval(col+1, col+1);
+            }
+        }
+        */
+    }//GEN-LAST:event_TabTableKeyReleased
 
     private void InsertIntoTab(){
         TabColIndex= TabTable.getSelectedColumn();

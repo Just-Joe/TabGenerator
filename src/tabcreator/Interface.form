@@ -877,18 +877,19 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton33">
+        <Component class="javax.swing.JToggleButton" name="jToggleButton35">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/Unselected.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="D-6"/>
+            <Property name="text" type="java.lang.String" value="E-6"/>
             <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/Unselected.png"/>
             </Property>
             <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/Unselected.png"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="E" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/Selected.png"/>
@@ -896,7 +897,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="101" width="50" height="10"/>
+              <AbsoluteConstraints x="460" y="15" width="50" height="10"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -923,30 +924,6 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton35">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/Unselected.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="E-6"/>
-            <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/Unselected.png"/>
-            </Property>
-            <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/Unselected.png"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="E" noResource="true"/>
-            <Property name="opaque" type="boolean" value="true"/>
-            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/Selected.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="15" width="50" height="10"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JToggleButton" name="jToggleButton36">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -967,6 +944,29 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="460" y="70" width="50" height="10"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="jToggleButton33">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Unselected.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="D-6"/>
+            <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Unselected.png"/>
+            </Property>
+            <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Unselected.png"/>
+            </Property>
+            <Property name="opaque" type="boolean" value="true"/>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Selected.png"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="460" y="101" width="50" height="10"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1865,6 +1865,9 @@
       </Constraints>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jScrollPane1KeyPressed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -1889,47 +1892,49 @@
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="32" rowCount="6">
-                <Column editable="true" title="1" type="java.lang.Object"/>
-                <Column editable="true" title="2" type="java.lang.Object"/>
-                <Column editable="true" title="3" type="java.lang.Object"/>
-                <Column editable="true" title="4" type="java.lang.Object"/>
-                <Column editable="true" title="5" type="java.lang.Object"/>
-                <Column editable="true" title="6" type="java.lang.Object"/>
-                <Column editable="true" title="7" type="java.lang.Object"/>
-                <Column editable="true" title="8" type="java.lang.Object"/>
-                <Column editable="true" title="9" type="java.lang.Object"/>
-                <Column editable="true" title="10" type="java.lang.Object"/>
-                <Column editable="true" title="11" type="java.lang.Object"/>
-                <Column editable="true" title="12" type="java.lang.Object"/>
-                <Column editable="true" title="13" type="java.lang.Object"/>
-                <Column editable="true" title="14" type="java.lang.Object"/>
-                <Column editable="true" title="15" type="java.lang.Object"/>
-                <Column editable="true" title="16" type="java.lang.Object"/>
-                <Column editable="true" title="17" type="java.lang.Object"/>
-                <Column editable="true" title="18" type="java.lang.Object"/>
-                <Column editable="true" title="19" type="java.lang.Object"/>
-                <Column editable="true" title="20" type="java.lang.Object"/>
-                <Column editable="true" title="21" type="java.lang.Object"/>
-                <Column editable="true" title="22" type="java.lang.Object"/>
-                <Column editable="true" title="23" type="java.lang.Object"/>
-                <Column editable="true" title="24" type="java.lang.Object"/>
-                <Column editable="true" title="25" type="java.lang.Object"/>
-                <Column editable="true" title="26" type="java.lang.Object"/>
-                <Column editable="true" title="27" type="java.lang.Object"/>
-                <Column editable="true" title="28" type="java.lang.Object"/>
-                <Column editable="true" title="29" type="java.lang.Object"/>
-                <Column editable="true" title="30" type="java.lang.Object"/>
-                <Column editable="true" title="31" type="java.lang.Object"/>
-                <Column editable="true" title="32" type="java.lang.Object"/>
+                <Column editable="false" title="1" type="java.lang.Object"/>
+                <Column editable="false" title="2" type="java.lang.Object"/>
+                <Column editable="false" title="3" type="java.lang.Object"/>
+                <Column editable="false" title="4" type="java.lang.Object"/>
+                <Column editable="false" title="5" type="java.lang.Object"/>
+                <Column editable="false" title="6" type="java.lang.Object"/>
+                <Column editable="false" title="7" type="java.lang.Object"/>
+                <Column editable="false" title="8" type="java.lang.Object"/>
+                <Column editable="false" title="9" type="java.lang.Object"/>
+                <Column editable="false" title="10" type="java.lang.Object"/>
+                <Column editable="false" title="11" type="java.lang.Object"/>
+                <Column editable="false" title="12" type="java.lang.Object"/>
+                <Column editable="false" title="13" type="java.lang.Object"/>
+                <Column editable="false" title="14" type="java.lang.Object"/>
+                <Column editable="false" title="15" type="java.lang.Object"/>
+                <Column editable="false" title="16" type="java.lang.Object"/>
+                <Column editable="false" title="17" type="java.lang.Object"/>
+                <Column editable="false" title="18" type="java.lang.Object"/>
+                <Column editable="false" title="19" type="java.lang.Object"/>
+                <Column editable="false" title="20" type="java.lang.Object"/>
+                <Column editable="false" title="21" type="java.lang.Object"/>
+                <Column editable="false" title="22" type="java.lang.Object"/>
+                <Column editable="false" title="23" type="java.lang.Object"/>
+                <Column editable="false" title="24" type="java.lang.Object"/>
+                <Column editable="false" title="25" type="java.lang.Object"/>
+                <Column editable="false" title="26" type="java.lang.Object"/>
+                <Column editable="false" title="27" type="java.lang.Object"/>
+                <Column editable="false" title="28" type="java.lang.Object"/>
+                <Column editable="false" title="29" type="java.lang.Object"/>
+                <Column editable="false" title="30" type="java.lang.Object"/>
+                <Column editable="false" title="31" type="java.lang.Object"/>
+                <Column editable="false" title="32" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="autoResizeMode" type="int" value="0"/>
             <Property name="columnSelectionAllowed" type="boolean" value="true"/>
             <Property name="rowHeight" type="int" value="25"/>
             <Property name="rowSelectionAllowed" type="boolean" value="false"/>
+            <Property name="showVerticalLines" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TabTableMouseClicked"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TabTableKeyReleased"/>
           </Events>
         </Component>
       </SubComponents>
@@ -2063,7 +2068,7 @@
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="e: "/>
+        <Property name="text" type="java.lang.String" value="E: "/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2161,7 +2166,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/ButtonBack.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Insert"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="InsertTabMouseClicked"/>
@@ -2174,6 +2183,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6d" green="75" red="86" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
@@ -2182,6 +2194,7 @@
             <StringItem index="0" value="Chord Name"/>
           </StringArray>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -2197,7 +2210,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/ButtonBack.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Duplicate"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DuplicateButtonMouseClicked"/>
@@ -2213,7 +2230,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/ButtonBack.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Clear All"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2223,6 +2244,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6d" green="75" red="86" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
@@ -2232,6 +2256,7 @@
             <StringItem index="1" value=" "/>
           </StringArray>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -2247,7 +2272,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/ButtonBack.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
@@ -2405,7 +2434,7 @@
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="e: "/>
+        <Property name="text" type="java.lang.String" value="E: "/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
