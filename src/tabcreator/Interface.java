@@ -1298,6 +1298,10 @@ public class Interface extends javax.swing.JFrame {
     }
     
     private void ShowCurrentTab(int col){
+        //
+        //FIX THIS TO AUTO SHOW TAB ON FRETBOARD WHEN CLICKING ON TABLE
+        //
+        
         ClearSelection();
         if(((String)TabTable.getValueAt(0, col)).trim()!=""){
             int row=Integer.valueOf((String)TabTable.getValueAt(0, col));
