@@ -18,7 +18,8 @@ public class TabCreator {
     public static void main(String[] args) {
         // TODO code application logic here
         Interface IN = new Interface();
-        IN.setBounds(0, 0, 1040, 580);
+        IN.setTitle("Tab Generator: G-Tutor 1.0 Interface");
+        IN.setBounds(0, 0, 1040, 640);
         IN.setVisible(true);
     }
     
